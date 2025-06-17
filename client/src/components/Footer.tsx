@@ -3,7 +3,7 @@ import { SocialMediaIcons } from '../constants/index'; // Adjust the import path
 
 const Footer: React.FC = () => {
   return (
-    <footer className="w-full bg-primary/95 text-gray3 pt-10 pb-4 px-4 mt-16 flex flex-col items-center border-t-2 border-accent2">
+    <footer className="w-full bg-primary/95 text-gray3 pt-10 pb-4 px-4 flex flex-col items-center border-t-2 border-accent2">
       <div className="w-full max-w-[1300px]  flex flex-col md:flex-row justify-between items-start md:items-start px-2  md:gap-12">
         {/* Logo, Description, and Contact */}
         <div className="flex flex-col items-start space-y-2 mb-2 md:mb-0 min-w-[280px] md:max-w-md w-full">
