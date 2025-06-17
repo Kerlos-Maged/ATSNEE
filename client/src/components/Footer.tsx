@@ -1,27 +1,5 @@
 import React from 'react';
-
-const SocialMediaIcons = [
-  {
-    name: 'Twitter',
-    icon: 'fab fa-twitter',
-    url: '#'
-  },
-  {
-    name: 'Facebook',
-    icon: 'fab fa-facebook',
-    url: '#'
-  },
-  {
-    name: 'Instagram',
-    icon: 'fab fa-instagram',
-    url: '#'
-  },
-   {
-    name: 'LinkedIn',
-    icon: 'fab fa-linkedin',
-    url: '#'
-  }
-]
+import { SocialMediaIcons } from '../constants/index'; // Adjust the import path as necessary
 
 const Footer: React.FC = () => {
   return (
@@ -31,7 +9,7 @@ const Footer: React.FC = () => {
         <div className="flex flex-col items-start space-y-2 mb-2 md:mb-0 min-w-[280px] md:max-w-md w-full">
           <div className="flex items-center space-x-3">
             {/* <div className="w-12 h-12 bg-accent2 rounded-full flex items-center justify-center text-white text-2xl font-bold shadow-lg">⚛️</div> */}
-            <span className="text-accent2 text-2xl font-extrabold tracking-wider drop-shadow">Physics Club</span>
+            <span className="text-accent2 text-2xl font-extrabold tracking-wider drop-shadow">ATSNEE Physics Club</span>
           </div>
           <p className="text-gray2 text-sm max-w-md text-left leading-snug py-3">Empowering youth through science, competitions, and the Physics For Youth Program. Join us to explore, learn, and innovate in the world of physics!</p>
           {/* Contact Us */}
@@ -76,10 +54,12 @@ const Footer: React.FC = () => {
           </div>
         </div>
       </div>
+
       {/* Copyright */}
       <div className="w-full max-w-4xl text-center text-xs text-gray2 border-t border-gray1 pt-2 mt-1 px-2 mt-6">
         &copy; {new Date().getFullYear()} Physics Club. All rights reserved.
       </div>
+
     </footer>
   );
 };
