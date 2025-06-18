@@ -1,24 +1,57 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Header: React.FC = () => {
-    return (
-        <header>
-            <div className="w-full bg-primary/95 text-gray3 h-[70px] flex flex-col items-center border-b-2 border-accent2">
-                <div className="w-full h-[70px] max-w-[1300px] flex flex-col md:flex-row justify-between items-center px-2 md:gap-12">
-                    <div className="flex items-center space-x-3 mb-2 md:mb-0">
-                        <span className="text-accent2 text-2xl font-extrabold tracking-wider drop-shadow">ATSNEE Physics Club</span>
-                    </div>
-                    <nav className="flex space-x-6 text-lg font-semibold">
-                        <a href="#about" className="hover:text-accent2 transition">About</a>
-                        <a href="#competition" className="hover:text-accent2 transition">Competition</a>
-                        <a href="#pfyp" className="hover:text-accent2 transition">PFYP</a>
-                        <a href="#history" className="hover:text-accent transition">Our History</a>
-                    </nav>
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
+
+    return (
+        <header className="sticky top-0 z-50">
+            <div className="w-full bg-primary/95 text-gray3 h-[70px] flex flex-col items-center border-b-2 border-accent2">
+                <div className="w-full h-[70px] max-w-[1300px] flex md:flex-row justify-between items-center px-4 md:px-2 md:gap-12">
+                    {/* Logo and Brand */}
+                    <div className="flex items-center justify-between w-full md:w-auto">
+                        <div className="flex items-center space-x-3">
+                            <span className="text-accent2 text-2xl font-extrabold tracking-wider drop-shadow">ATSNEE Physics Club</span>
+                        </div>
+                        
+                        {/* Hamburger Menu Button */}
+                        <button 
+                            className="md:hidden text-gray3 hover:text-accent2 transition-colors"
+                            onClick={toggleMenu}
+                            aria-label="Toggle menu"
+                        >
+                            <svg 
+                                className="w-6 h-6" 
+                                fill="none" 
+                                strokeLinecap="round" 
+                                strokeLinejoin="round" 
+                                strokeWidth="2" 
+                                viewBox="0 0 24 24" 
+                                stroke="currentColor"
+                            >
+                                {isMenuOpen ? (
+                                    <path d="M6 18L18 6M6 6l12 12" />
+                                ) : (
+                                    <path d="M4 6h16M4 12h16M4 18h16" />
+                                )}
+                            </svg>
+                        </button>
+                    </div>
+
+                    {/* Navigation Links */}
+                    <nav className={`${isMenuOpen ? 'flex' : 'hidden'} md:flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6 text-lg font-semibold w-full md:w-auto bg-primary/95 md:bg-transparent py-4 md:py-0`}>
+                        <a href="/about" className="hover:text-accent2 transition-colors w-full md:w-auto text-center">About</a>
+                        <a href="#competition" className="hover:text-accent2 transition-colors w-full md:w-auto text-center">Competition</a>
+                        <a href="#pfyp" className="hover:text-accent2 transition-colors w-full md:w-auto text-center">PFYP</a>
+                        <a href="#history" className="hover:text-accent transition-colors w-full md:w-auto text-center">Our History</a>
+                    </nav>
                 </div>
             </div>
         </header>   
-    )
-}
+    );
+};
 
-export default Header;
+export default Header; 

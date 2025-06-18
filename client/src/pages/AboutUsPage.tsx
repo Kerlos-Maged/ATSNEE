@@ -6,7 +6,7 @@ const AboutUsPage: React.FC = () => {
   return (
     <>
     <div className="w-full bg-primary/95 text-gray3 pb-4 px-4 flex flex-col justify-center items-center border-b-2 border-accent2">
-  <div className="w-full max-w-[1300px] flex flex-col justify-center items-center px-2 gap-12">
+    <div className="w-full max-w-[1300px] flex flex-col justify-center items-center px-2 gap-12">
             {/* Hero Section with Split Design */}
             <div className="relative min-h-[80vh] flex items-center ">
 
