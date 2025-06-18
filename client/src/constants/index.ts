@@ -21,6 +21,24 @@ export const SocialMediaIcons : { name: string; icon: string; url: string; }[] =
   }
 ] 
 
+export const timeline = [
+  {
+    year: '2023',
+    title: 'Club Founded',
+    description: 'The Physics Club was officially established, bringing together students passionate about exploring the universe.',
+  },
+  {
+    year: '2023',
+    title: 'First Session',
+    description: 'Our inaugural session featured an introduction to quantum mechanics, interactive experiments, and a vibrant community gathering.',
+  },
+  {
+    year: '2024',
+    title: 'First Competition',
+    description: 'Hosted our first annual physics competition, challenging students with real-world problems and experiments.',
+  },
+  // Add more milestones as needed
+];
 
 export const TeamMembers = [
     {

@@ -1,23 +1,6 @@
 import React from 'react';
+import { timeline } from '../constants/index';
 
-const timeline = [
-  {
-    year: '2023',
-    title: 'Club Founded',
-    description: 'The Physics Club was officially established, bringing together students passionate about exploring the universe.',
-  },
-  {
-    year: '2023',
-    title: 'First Session',
-    description: 'Our inaugural session featured an introduction to quantum mechanics, interactive experiments, and a vibrant community gathering.',
-  },
-  {
-    year: '2024',
-    title: 'First Competition',
-    description: 'Hosted our first annual physics competition, challenging students with real-world problems and experiments.',
-  },
-  // Add more milestones as needed
-];
 
 const HistoryPage: React.FC = () => {
   return (
@@ -73,7 +56,7 @@ const HistoryPage: React.FC = () => {
                 </ul>
               </div>
             </div>  
-            
+
             <div className="space-y-6">
               <div className="grid grid-cols-2 gap-4">
                 <div className="aspect-square rounded-xl overflow-hidden bg-accent2/20">
