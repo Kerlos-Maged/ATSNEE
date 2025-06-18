@@ -1,5 +1,12 @@
 import React, { useState } from "react";
 
+const Links = [
+    { name: "Home", href: "/" },
+    { name: "Programs", href: "/programs" },
+    { name: "About", href: "/about" },
+    { name: "Competition", href: "#competition" },
+    { name: "Our History", href: "#history" },
+]
 const Header: React.FC = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -43,15 +50,17 @@ const Header: React.FC = () => {
 
                     {/* Navigation Links */}
                     <nav className={`${isMenuOpen ? 'flex' : 'hidden'} md:flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6 text-lg font-semibold w-full md:w-auto bg-primary/95 md:bg-transparent py-4 md:py-0`}>
-                        <a href="/about" className="hover:text-accent2 transition-colors w-full md:w-auto text-center">About</a>
-                        <a href="#competition" className="hover:text-accent2 transition-colors w-full md:w-auto text-center">Competition</a>
-                        <a href="#pfyp" className="hover:text-accent2 transition-colors w-full md:w-auto text-center">PFYP</a>
-                        <a href="#history" className="hover:text-accent transition-colors w-full md:w-auto text-center">Our History</a>
+                        {Links.map((link) => (
+                            <a key={link.name} href={link.href} className="hover:text-accent2 transition-colors w-full md:w-auto text-center">
+                                {link.name}
+                            </a>
+                        ))}
                     </nav>
                 </div>
             </div>
         </header>   
     );
 };
+
 
 export default Header; 
