@@ -28,12 +28,9 @@ const HomePage: React.FC = () => {
                     Join Us
                 </button>
                 <button className="bg-white/10 hover:bg-white/20 text-white font-bold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 backdrop-blur-lg">
-                    Learn More
-                </button>
-                <button className="bg-white/10 hover:bg-white/20 text-white font-bold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 backdrop-blur-lg">
                     Contact Us
                 </button>
-                
+            
                 </div>
             </div>
             </div>

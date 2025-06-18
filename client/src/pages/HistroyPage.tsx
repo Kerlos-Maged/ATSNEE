@@ -113,8 +113,10 @@ const HistoryPage: React.FC = () => {
           </div>
         </div>
       </section>
+
     </div>
   );
 };
 
 export default HistoryPage; 
+
