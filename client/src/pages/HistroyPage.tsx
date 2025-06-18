@@ -97,15 +97,9 @@ const HistoryPage: React.FC = () => {
       <section className="py-20 bg-gradient-to-b from-white/5 to-transparent">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 text-accent2 relative inline-block">
-              Milestones
-              <div className="absolute -bottom-2 left-0 w-full h-1 bg-accent2/20 rounded-full">
-                <div className="w-1/2 h-full bg-accent2 rounded-full animate-pulse"></div>
-              </div>
-            </h2>
-            <p className="text-xl text-gray3 mt-6">Key moments that shaped our journey.</p>
+            <h2 className="text-4xl font-bold mb-4 text-accent2">Milestones</h2>
+            <p className="text-xl text-gray3">Key moments that shaped our journey.</p>
           </div>
-
           <div className="relative max-w-5xl mx-auto">
             {/* Timeline Line with Gradient */}
             <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-accent2 via-accent2/50 to-transparent"></div>
@@ -123,7 +117,11 @@ const HistoryPage: React.FC = () => {
                 </div>
 
                 {/* Date Badge */}
-                <div className={` pl-4 md:pl-0 ${idx % 2 === 0 ? 'md:w-1/2' : 'md:w-1/2'}`}>
+                <div className={
+                  idx % 2 === 0
+                    ? "md:w-1/2 pl-8 md:pl-0 flex md:justify-start"
+                    : "md:w-1/2 pl-8 md:pl-0 flex justify-end md:justify-end"
+                }>
                   <div className="inline-block px-4 py-2 bg-accent2/20 backdrop-blur-sm rounded-lg border border-accent2/30">
                     <span className="text-xl font-bold text-accent2">{item.year}</span>
                   </div>
@@ -137,7 +135,19 @@ const HistoryPage: React.FC = () => {
                       {item.title}
                     </h3>
                     <p className="text-gray3 leading-relaxed">{item.description}</p>
-                    
+                    {/* Optional Achievement List */}
+                    {/* {item.achievements && (
+                      <div className="mt-4 pt-4 border-t border-white/10">
+                        <ul className="space-y-2">
+                          {item.achievements.map((achievement, i) => (
+                            <li key={i} className="flex items-center text-gray3">
+                              <span className="mr-2 text-accent2">•</span>
+                              {achievement}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )} */}
                   </div>
                 </div>
               </div>

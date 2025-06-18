@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import RegistrationAlert from "./RegistrationAlert";
 
 const navItems = [
   { name: "Home", href: "/" },
@@ -32,7 +33,8 @@ const Header: React.FC = () => {
     const closeMenu = () => setIsMenuOpen(false);
 
     return (
-        <header className="sticky top-0 z-50 w-full bg-primary/95 text-gray3 shadow-lg">
+        <div className="sticky top-0 z-50 w-full bg-primary/95 text-gray3 shadow-lg">
+            <header className="sticky top-0 z-50 w-full bg-primary/95 text-gray3 shadow-lg">
             {/* Physics-themed background accent */}
             <div className="absolute inset-0 h-[90px] w-full overflow-hidden pointer-events-none select-none -z-10">
                 <svg className="absolute left-0 top-0 opacity-30" width="400" height="90" viewBox="0 0 400 90" fill="none">
@@ -159,8 +161,10 @@ const Header: React.FC = () => {
                     </div>
                 )}
             </div>
-        </header>
+            </header>
+            <RegistrationAlert />
+        </div>
     );
 };
 
-export default Header;
+export default Header; 

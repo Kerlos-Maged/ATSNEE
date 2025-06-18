@@ -54,28 +54,41 @@ const AboutUsPage: React.FC = () => {
                 </div>
                 </div>                
                 </div>
-                {/* Team Members*/}
-                <div className="">
-                    <div className="container mx-auto px-4">
-                        <h2 className="text-4xl font-bold text-center mb-16">
-                            <span className="text-accent2">Our Leadership Team</span>
-                        </h2>
-                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            {TeamMembers.map((member, index) => (
-                                <div key={index} className="group">
-                                    <div className="bg-white/10 backdrop-blur-lg rounded-2xl overflow-hidden border border-white/20">
-                                        <div className="h-64 bg-accent2/20 flex items-center justify-center text-6xl">{member.image ? <img src={member.image} alt={member.name} className="w-full h-full object-cover" /> : "👨‍🔬"}</div>
-                                        <div className="p-8">
-                                            <h3 className="text-2xl font-bold text-white mb-2">{member.name}</h3>
-                                            <p className="text-accent2 mb-4">{member.role}</p>
-                                            <p className="text-gray3">{member.description}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
+                {/* Team Members */}
+                <div>
+  <div className="container mx-auto px-4">
+    <h2 className="text-4xl font-bold text-center mb-16">
+      <span className="text-accent2">Our Leadership Team</span>
+    </h2>
+    <div className="flex flex-col gap-8">
+      {TeamMembers.map((member, index) => (
+        <div
+          key={index}
+          className="group flex flex-col md:flex-row bg-white/10 backdrop-blur-lg rounded-2xl overflow-hidden border border-white/20"
+        >
+          {/* Image */}
+          <div className="h-64 md:h-auto md:w-64 flex-shrink-0 bg-accent2/20 flex items-center justify-center text-6xl">
+            {member.image ? (
+              <img
+                src={member.image}
+                alt={member.name}
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              "👨‍🔬"
+            )}
+          </div>
+          {/* Info */}
+          <div className="p-8 flex flex-col justify-center">
+            <h3 className="text-2xl font-bold text-white mb-2">{member.name}</h3>
+            <p className="text-accent2 mb-4">{member.role}</p>
+            <p className="text-gray3">{member.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
                 {/* Join Us Section with Modern Design */}
                 <div className="py-8 bg-white/5 rounded-3xl">
                     <div className="container mx-auto px-4 ">

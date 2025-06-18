@@ -1,9 +1,13 @@
 import React from "react";
 import sciencePhoto from "../assets/sciencephoto2.2.jpg";
+import RegistrationAlert from "../components/RegistrationAlert";
 
 const HomePage: React.FC = () => {
     return (
         <div className="w-full">
+              {/* Registration Alert */}
+      
+
             {/* Hero Section */}
             <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
                 
@@ -17,8 +21,7 @@ const HomePage: React.FC = () => {
                     {/* Overlay */}
                     <div className="absolute inset-0 bg-black/70" />
                 </div>
-
-                {/* Content */}
+              {/* Content */}
                 <div className="container mx-auto px-4 relative z-10">
                     <div className="max-w-4xl mx-auto text-center">
                         <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
@@ -47,15 +50,14 @@ const HomePage: React.FC = () => {
             </section>
             
             <section className="my-8 p-6 bg-primary/95 rounded-lg shadow">
-                
                 <h2 className="text-2xl font-bold text-accent2 mb-2">About</h2>
-                
                 <p className="text-gray-700">
                     Learn more about the ATSNEE Physics Club, our mission, and the people behind our community.
                 </p>
-
             </section>
 
+
+        
         </div>
     );
 };
