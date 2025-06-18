@@ -163,6 +163,11 @@ const Header: React.FC = () => {
             </div>
             </header>
             <RegistrationAlert />
+            <div className="hidden">
+[]
+
+
+            </div>r
         </div>
     );
 };
