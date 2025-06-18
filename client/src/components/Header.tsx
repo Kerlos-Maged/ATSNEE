@@ -4,8 +4,8 @@ const Links = [
     { name: "Home", href: "/" },
     { name: "Programs", href: "/programs" },
     { name: "About", href: "/about" },
-    { name: "Competition", href: "#competition" },
-    { name: "Our History", href: "#history" },
+    { name: "Competition", href: "/competition" },
+    { name: "Our History", href: "/history" },
 ]
 const Header: React.FC = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
