@@ -3,14 +3,21 @@ import React, { useState, useEffect } from "react";
 const navItems = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
-  { name: "Programs", href: "/programs" },
-  { name: "History", href: "/history" },
+{ name: "History", href: "/history" },
+    { 
+    name: "Programs", 
+    dropdown: [
+        { name: "Season 1", href: "/programs/season1" },
+        { name: "Season 2", href: "/programs/season2" },
+    ]
+    },
   { name: "Contact", href: "/contact" },
 ];
 
 const Header: React.FC = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isMobileView, setIsMobileView] = useState(false);
+    const [isProgramsOpen, setIsProgramsOpen] = useState(false);
 
     useEffect(() => {
         const handleResize = () => {
@@ -21,10 +28,7 @@ const Header: React.FC = () => {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen);
-    };
-
+    const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
     const closeMenu = () => setIsMenuOpen(false);
 
     return (
@@ -37,7 +41,7 @@ const Header: React.FC = () => {
                     <ellipse cx="320" cy="45" rx="80" ry="25" stroke="#b6b6b6" strokeWidth="3" transform="rotate(-10 320 45)" />
                 </svg>
             </div>
-            <div className="w-full bg-white/10 backdrop-blur-lg shadow-lg border-b border-accent2/40">
+            <div className="w-full bg-white/15 backdrop-blur-lg shadow-lg border-b border-accent2/40">
                 <div className="max-w-[1300px] mx-auto h-[90px] flex items-center justify-between px-4 md:px-8 relative">
                     {/* Logo and Brand */}
                     <div className="flex items-center gap-3">
@@ -60,35 +64,97 @@ const Header: React.FC = () => {
 
                     {/* Desktop Navigation */}
                     <nav className="hidden lg:flex flex-row items-center space-x-8 text-lg font-semibold">
-                        {navItems.map((item) => (
-                            <a
-                                key={item.name}
-                                href={item.href}
-                                className="block px-6 py-4 md:py-0 text-gray-900 hover:text-accent2 transition-colors border-b-0 hover:underline hover:underline-offset-8 decoration-accent2 decoration-2"
+                      {navItems.map((item) =>
+                        item.dropdown ? (
+                          <div key={item.name} className="relative">
+                            <button
+                              onClick={() => setIsProgramsOpen((open) => !open)}
+                              className="flex items-center px-6 py-4 md:py-0 text-gray-900 hover:text-accent2 transition-colors border-b-0 hover:underline hover:underline-offset-8 decoration-accent2 decoration-2"
                             >
-                                {item.name}
-                            </a>
-                        ))}
+                              {item.name}
+                              <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" d={isProgramsOpen ? "M19 15l-7-7-7 7" : "M19 9l-7 7-7-7"} />
+                              </svg>
+                            </button>
+                            {isProgramsOpen && (
+                              <div
+                                className="absolute left-0 mt-4 w-40 bg-white rounded shadow-lg z-50 transition-all duration-300 ease-out opacity-100 translate-y-2"
+                                style={{
+                                  opacity: isProgramsOpen ? 1 : 0,
+                                  transform: isProgramsOpen ? "translateY(8px)" : "translateY(0)",
+                                  pointerEvents: isProgramsOpen ? "auto" : "none",
+                                }}
+                              >
+                                {item.dropdown.map((sub) => (
+                                  <a
+                                    key={sub.name}
+                                    href={sub.href}
+                                    className="block px-4 py-2 text-gray-700 hover:bg-accent2/10 hover:text-accent2 transition-colors"
+                                    onClick={() => setIsProgramsOpen(false)}
+                                  >
+                                    {sub.name}
+                                  </a>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        ) : (
+                          <a
+                            key={item.name}
+                            href={item.href}
+                            className="block px-6 py-4 md:py-0 text-gray-900 hover:text-accent2 transition-colors border-b-0 hover:underline hover:underline-offset-8 decoration-accent2 decoration-2"
+                          >
+                            {item.name}
+                          </a>
+                        )
+                      )}
                     </nav>
                 </div>
                 {/* Mobile Menu Dropdown */}
                 {isMobileView && (
                     <div
-                        className={`fixed top-[90px] left-0 w-full bg-primary/95 text-gray3 shadow-lg  shadow-lg border-b border-accent2/40 transition-all duration-300 z-40 ${isMenuOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0 pointer-events-none'} overflow-hidden`}
+                        className={`fixed top-[90px] left-0 w-full bg-primary/95 text-gray3 shadow-lg border-b border-accent2/40 transition-all duration-300 z-40 ${isMenuOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0 pointer-events-none'} overflow-hidden`}
                         style={{backdropFilter: 'blur(12px)'}}
                     >
-                        
                         <nav className="flex flex-col items-center py-4 w-full bg-white/15 backdrop-blur-lg shadow-lg border-b border-accent2/40">
-                            {navItems.map((item) => (
-                                <a
-                                    key={item.name}
-                                    href={item.href}
-                                    onClick={closeMenu}
-                                    className="block w-full text-center py-3 text-lg font-semibold text-gray-900 hover:text-accent2 transition-colors last:border-b-0"
-                                >
+                            {navItems.map((item) =>
+                              item.dropdown ? (
+                                <div key={item.name} className="w-full">
+                                  <button
+                                    onClick={() => setIsProgramsOpen(!isProgramsOpen)}
+                                    className="w-full text-left py-3 px-4 text-lg font-semibold text-gray-900 hover:text-accent2 flex items-center justify-between"
+                                  >
                                     {item.name}
+                                    <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                                      <path strokeLinecap="round" strokeLinejoin="round" d={isProgramsOpen ? "M19 15l-7-7-7 7" : "M19 9l-7 7-7-7"} />
+                                    </svg>
+                                  </button>
+                                  {isProgramsOpen && (
+                                    <div className="pl-4 transition-all duration-300 ease-out">
+                                      {item.dropdown.map((sub) => (
+                                        <a
+                                          key={sub.name}
+                                          href={sub.href}
+                                          onClick={closeMenu}
+                                          className="block w-full py-2 text-gray-700 hover:text-accent2 transition-colors"
+                                        >
+                                          {sub.name}
+                                        </a>
+                                      ))}
+                                    </div>
+                                  )}
+                                </div>
+                              ) : (
+                                <a
+                                  key={item.name}
+                                  href={item.href}
+                                  onClick={closeMenu}
+                                  className="block w-full text-center py-3 text-lg font-semibold text-gray-900 hover:text-accent2 transition-colors last:border-b-0"
+                                >
+                                  {item.name}
                                 </a>
-                            ))}
+                              )
+                            )}
                         </nav>
                     </div>
                 )}

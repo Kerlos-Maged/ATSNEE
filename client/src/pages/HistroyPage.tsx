@@ -94,19 +94,51 @@ const HistoryPage: React.FC = () => {
       </section>
 
       {/* Timeline Section */}
-      <section className="py-20 bg-white/5">
+      <section className="py-20 bg-gradient-to-b from-white/5 to-transparent">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 text-accent2">Milestones</h2>
-            <p className="text-xl text-gray3">Key moments that shaped our journey.</p>
+            <h2 className="text-4xl font-bold mb-4 text-accent2 relative inline-block">
+              Milestones
+              <div className="absolute -bottom-2 left-0 w-full h-1 bg-accent2/20 rounded-full">
+                <div className="w-1/2 h-full bg-accent2 rounded-full animate-pulse"></div>
+              </div>
+            </h2>
+            <p className="text-xl text-gray3 mt-6">Key moments that shaped our journey.</p>
           </div>
-          <div className="relative border-l-4 border-accent2 pl-8">
+
+          <div className="relative max-w-5xl mx-auto">
+            {/* Timeline Line with Gradient */}
+            <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-accent2 via-accent2/50 to-transparent"></div>
+
             {timeline.map((item, idx) => (
-              <div key={idx} className="mb-12 relative">
-                <div className="absolute -left-5 top-2 w-6 h-6 bg-accent2 rounded-full border-4 border-white"></div>
-                <div className="bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-white/20">
-                  <h3 className="text-2xl font-bold text-white mb-2">{item.title} <span className="text-accent2 text-lg font-semibold ml-2">({item.year})</span></h3>
-                  <p className="text-gray3">{item.description}</p>
+              <div 
+                key={idx} 
+                className={`mb-16 last:mb-0 relative flex flex-col md:flex-row gap-8 items-start
+                  ${idx % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
+              >
+                {/* Timeline Node */}
+                <div className="absolute left-0 md:left-1/2 -translate-x-[10px] md:-translate-x-[10px] mt-6">
+                  <div className="w-5 h-5 rounded-full bg-accent2 border-4 border-gray-900"></div>
+                  <div className="absolute inset-0 w-5 h-5 rounded-full border-2 border-accent2 animate-ping"></div>
+                </div>
+
+                {/* Date Badge */}
+                <div className={` pl-4 md:pl-0 ${idx % 2 === 0 ? 'md:w-1/2' : 'md:w-1/2'}`}>
+                  <div className="inline-block px-4 py-2 bg-accent2/20 backdrop-blur-sm rounded-lg border border-accent2/30">
+                    <span className="text-xl font-bold text-accent2">{item.year}</span>
+                  </div>
+                </div>
+
+                {/* Content Card */}
+                <div className="md:w-1/2 pl-8 md:pl-0 md:px-8">
+                  <div className="bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-white/20 
+                    transform transition-all duration-300 hover:scale-[1.02] hover:bg-white/15 group">
+                    <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-accent2 transition-colors">
+                      {item.title}
+                    </h3>
+                    <p className="text-gray3 leading-relaxed">{item.description}</p>
+                    
+                  </div>
                 </div>
               </div>
             ))}
@@ -118,5 +150,5 @@ const HistoryPage: React.FC = () => {
   );
 };
 
-export default HistoryPage; 
+export default HistoryPage;
 
