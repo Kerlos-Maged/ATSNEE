@@ -1,5 +1,6 @@
 import React from "react";
-import sciencePhoto from "../assets/sciencephoto2.2.jpg";
+import sciencePhoto from "../assets/homepage.jpg";
+
 
 const pageOverviews = [
   {
