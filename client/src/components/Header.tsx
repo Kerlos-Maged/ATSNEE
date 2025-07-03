@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import RegistrationAlert from "./RegistrationAlert";
+// import RegistrationAlert from "./RegistrationAlert";
 
 const navItems = [
   { name: "Home", href: "/" },
@@ -17,20 +17,15 @@ const navItems = [
 
 const Header: React.FC = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [isMobileView, setIsMobileView] = useState(false);
     const [isProgramsOpen, setIsProgramsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
 
     useEffect(() => {
-        const handleResize = () => setIsMobileView(window.innerWidth < 1024);
         const handleScroll = () => setIsScrolled(window.scrollY > 20);
         
-        handleResize();
-        window.addEventListener('resize', handleResize);
         window.addEventListener('scroll', handleScroll);
         
         return () => {
-            window.removeEventListener('resize', handleResize);
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
