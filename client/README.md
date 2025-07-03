@@ -52,3 +52,29 @@ export default tseslint.config({
   },
 })
 ```
+
+## Deployment on Vercel
+
+To deploy this Vite + React app on Vercel:
+
+1. **Connect your GitHub repository to Vercel.**
+2. **Set the project root to the `client` directory** (if deploying only the frontend).
+3. **Set the following build settings:**
+   - **Build Command:** `npm run build`
+   - **Output Directory:** `dist`
+   - **Install Command:** `npm install`
+
+4. (Optional) Add a `vercel.json` file to the `client` directory for custom configuration:
+
+```json
+{
+  "builds": [
+    { "src": "vite.config.ts", "use": "@vercel/static-build", "config": { "distDir": "dist" } }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
+}
+```
+
+This ensures client-side routing works correctly for a single-page app.
